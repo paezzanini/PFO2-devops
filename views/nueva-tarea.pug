@@ -1,0 +1,58 @@
+doctype html
+html
+  head
+    title Agregar Nueva Tarea
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css")
+    script(src='/js/tareas.js') // Enlaza el archivo JS para gestionar el token
+  body
+    .container.mt-5
+      h1.text-center.mb-4 Agregar Nueva Tarea
+
+      // Formulario para agregar una nueva tarea
+      form#postForm(action='/api/menu' method='POST' class="mt-4 mx-auto" style="max-width: 400px;")
+        .mb-3
+          label(for="id" class="form-label") Identificador de la tarea
+          input(type="number" name="id" id="id" class="form-control form-control-sm" placeholder="ID de la tarea" required readonly)
+
+        .mb-3
+          label(for="tarea" class="form-label") Tarea
+          input(type="text" name="tarea" id="tarea" class="form-control form-control-sm" placeholder="Nombre de la tarea" required)
+
+        .mb-3
+          label(for="usuario" class="form-label") Usuario Asignado
+          input(type="text" name="usuario" id="usuario" class="form-control form-control-sm" placeholder="Nombre del usuario" required)
+
+        .mb-3
+          label(for="area" class="form-label") Área
+          select(name="area" id="area" class="form-control form-control-sm" required)
+            option(value="Compras") Compras
+            option(value="Ventas") Ventas
+            option(value="Producción") Producción
+            option(value="Inventario") Inventario
+
+        .mb-3
+          label(for="estado" class="form-label") Estado
+          select(name="estado" id="estado" class="form-control form-control-sm" required)
+            option(value="Pendiente") Pendiente
+            option(value="En progreso") En progreso
+            option(value="Completada") Completada
+
+        .mb-3
+          label(for="prioridad" class="form-label") Prioridad
+          select(name="prioridad" id="prioridad" class="form-control form-control-sm" required)
+            option(value="Baja") Baja
+            option(value="Media") Media
+            option(value="Alta") Alta
+
+        .mb-3
+          label(for="fechaVencimiento" class="form-label") Fecha de Vencimiento
+          input(type="date" name="fechaVencimiento" id="fechaVencimiento" class="form-control form-control-sm" required)
+
+        button(type="submit" class="btn btn-primary w-100 mt-3") Guardar Tarea
+        
+      p.text-center.mt-3
+        a.btn.btn-secondary(href="/menu") Volver
+        br
+        br
+        a.btn.btn-danger(href="/logout") Cerrar Sesión
+      hr
